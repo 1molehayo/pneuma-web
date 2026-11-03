@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:17
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_DB: pneuma_cms
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  seaweedfs:
+    image: chrislusf/seaweedfs
+    # `weed mini` runs master, volume, filer, S3 gateway and admin UI in one
+    # process. S3_BUCKET pre-creates the bucket, so there's no init container
+    # to wait on. This is also the image's default command, but it's set
+    # explicitly so an untagged image that drops it fails loudly instead of
+    # silently starting without the S3 gateway.
+    command: ["mini", "-dir=/data"]
+    ports:
+      # Host ports kept from the MinIO setup so S3_ENDPOINT is unchanged.
+      # 9000 is often php-fpm on macOS — don't bind the S3 API there.
+      - "9020:8333"  # S3 API
+      - "9021:23646" # Admin UI
+    environment:
+      # Named after the old MinIO root user on purpose — keeping the literals
+      # means nobody has to edit their local .env for this swap.
+      AWS_ACCESS_KEY_ID: minioadmin
+      AWS_SECRET_ACCESS_KEY: minioadmin
+      S3_BUCKET: cms-assets
+    volumes:
+      - seaweeddata:/data
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9333/cluster/status"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "1025:1025" # SMTP
+      - "8025:8025" # Web UI
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: "true"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+
+
+volumes:
+  pgdata:
+  seaweeddata:

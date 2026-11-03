@@ -1,0 +1,13 @@
+allowBuilds:
+  esbuild: true
+  workerd: true
+overrides:
+  "@cms/admin": file:packed/cms-admin.tgz
+  "@cms/client": file:packed/cms-client.tgz
+  "@cms/config": file:packed/cms-config.tgz
+  "@cms/email-smtp": file:packed/cms-email-smtp.tgz
+  "@cms/engine": file:packed/cms-engine.tgz
+  "@cms/paths": file:packed/cms-paths.tgz
+  "@cms/shopify": file:packed/cms-shopify.tgz
+  "@cms/storage-s3": file:packed/cms-storage-s3.tgz
+  "@cms/ui": file:packed/cms-ui.tgz
