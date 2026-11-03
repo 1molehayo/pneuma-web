@@ -1,0 +1,457 @@
+{
+  "version": 1,
+  "entities": [
+    {
+      "name": "_user",
+      "translatable": false,
+      "versions": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "createdAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "updatedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "publishedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "columnType": "text"
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        }
+      ]
+    },
+    {
+      "name": "_image",
+      "translatable": false,
+      "versions": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "createdAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "updatedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "publishedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "filename",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "mimeType",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "base": "number",
+          "storage": "column",
+          "columnType": "doublePrecision"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "base": "number",
+          "storage": "column",
+          "columnType": "doublePrecision"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "base": "number",
+          "storage": "column",
+          "columnType": "doublePrecision"
+        },
+        {
+          "name": "alt",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "columnType": "text"
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "base": "json",
+          "storage": "jsonb",
+          "elementType": "text"
+        },
+        {
+          "name": "url",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "hash",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "private",
+          "type": "boolean",
+          "base": "boolean",
+          "storage": "column",
+          "columnType": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "_video",
+      "translatable": false,
+      "versions": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "createdAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "updatedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "publishedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "filename",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "mimeType",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "base": "number",
+          "storage": "column",
+          "columnType": "doublePrecision"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "base": "number",
+          "storage": "column",
+          "columnType": "doublePrecision"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "base": "number",
+          "storage": "column",
+          "columnType": "doublePrecision"
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "base": "json",
+          "storage": "jsonb",
+          "elementType": "text"
+        },
+        {
+          "name": "url",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "hash",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "private",
+          "type": "boolean",
+          "base": "boolean",
+          "storage": "column",
+          "columnType": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "_file",
+      "translatable": false,
+      "versions": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "createdAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "updatedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "publishedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "filename",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "mimeType",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "base": "number",
+          "storage": "column",
+          "columnType": "doublePrecision"
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "base": "json",
+          "storage": "jsonb",
+          "elementType": "text"
+        },
+        {
+          "name": "url",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "hash",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "private",
+          "type": "boolean",
+          "base": "boolean",
+          "storage": "column",
+          "columnType": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "product_page",
+      "translatable": false,
+      "versions": true,
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "createdAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "updatedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "required": true,
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "publishedAt",
+          "type": "date",
+          "base": "date",
+          "storage": "column",
+          "columnType": "timestamptz"
+        },
+        {
+          "name": "product",
+          "type": "object",
+          "base": "json",
+          "storage": "jsonb",
+          "required": true,
+          "shape": {
+            "id": {
+              "type": "text",
+              "required": true
+            },
+            "handle": {
+              "type": "text",
+              "required": true
+            },
+            "title": {
+              "type": "text",
+              "required": false
+            },
+            "image": {
+              "type": "text",
+              "required": false
+            },
+            "status": {
+              "type": "text",
+              "required": false
+            }
+          }
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "base": "text",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        },
+        {
+          "name": "path",
+          "type": "slug",
+          "base": "slug",
+          "storage": "column",
+          "required": true,
+          "columnType": "text"
+        }
+      ]
+    }
+  ]
+}
