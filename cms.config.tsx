@@ -10,8 +10,14 @@ export const shop = shopify({
     clientId: process.env.SHOPIFY_CLIENT_ID,
     clientSecret: process.env.SHOPIFY_CLIENT_SECRET,
   },
-  // Pneuma Hydrogen channel — change if your channel name differs in admin
   channel: "Hydrogen",
+  pages: {
+    product_page: {
+      prefill: ({ product }) => ({
+        path: product?.handle ? `/products/${product.handle}` : undefined,
+      }),
+    },
+  },
 });
 
 const productPage = entity("product_page", {
@@ -19,7 +25,15 @@ const productPage = entity("product_page", {
   fields: [
     shop.product("product", { required: true, unique: true, fillTitle: true }),
     text("title", { required: true }),
-    path("path", { source: (doc) => `/products/${doc.product?.handle ?? ""}` }),
+    path("path", {
+      required: true,
+      prefix: () => "/products",
+      source: (doc) => {
+        const handle = (doc.product as { handle?: string } | null)?.handle;
+        return handle ? `/products/${handle}` : "";
+      },
+      slugify: (v) => v,
+    }),
   ],
   hooks: {
     beforeDraftSave: shop.assertUnique,
